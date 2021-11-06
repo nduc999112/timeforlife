@@ -1,0 +1,10 @@
+<svg id="Component_16_6" data-name="Component 16 – 6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="Ellipse_12" data-name="Ellipse 12" fill="#fff" stroke="#f56d12" stroke-width="1">
+    <circle cx="8" cy="8" r="8" stroke="none"/>
+    <circle cx="8" cy="8" r="7.5" fill="none"/>
+  </g>
+  <g id="warning-sign" transform="translate(-177.073 4.361)">
+    <path id="Path_2059" data-name="Path 2059" d="M185.229,6.45a.6.6,0,0,0,.595-.547l.4-4.818a1,1,0,1,0-2,0l.4,4.818A.6.6,0,0,0,185.229,6.45Z" transform="translate(0)" fill="#f56d12"/>
+    <path id="Path_2060" data-name="Path 2060" d="M206.1,410.908a.65.65,0,1,0,.65.65A.65.65,0,0,0,206.1,410.908Z" transform="translate(-20.874 -404.103)" fill="#f56d12"/>
+  </g>
+</svg>

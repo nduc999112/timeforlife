@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "232798747002",
+    "project_id": "timeforlife-1951e",
+    "storage_bucket": "timeforlife-1951e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232798747002:android:da1fcb5a3a95c71faa3ec3",
+        "android_client_info": {
+          "package_name": "com.example.timeforlife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232798747002-vlpeins91cucgt5fkvs01idm42i41djp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI_qz3uHB8UqVC4Xunr7EU2vdqydkq4w4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232798747002-vlpeins91cucgt5fkvs01idm42i41djp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
