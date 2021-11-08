@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:timeforlife/ui/homepage/homepage_view.dart';
 import 'package:timeforlife/ui/work/work_controller.dart';
-import 'package:timeforlife/ui/work/work_view.dart';
+
 import 'package:intl/intl.dart';
 
 class DetailWorkController extends GetxController{
@@ -99,10 +100,14 @@ class DetailWorkController extends GetxController{
     // FirebaseDatabase.instance.reference().child("Work").orderByChild("nomPlace").equalTo("t").onChildRemoved;
     var key=work!.key;
     print('work ${work!.contentWork}');
-   await databaseRef.child("Work").child(user!.uid).child(key!).remove().then((value) => Get.to(()=>WorkView()));
+   await databaseRef.child("Work").child(user!.uid).child(key!).remove().then((value) => Get.to(()=>HomePageUI()));
 
   }
-
+  void toWorkView(){
+    WorkController workController=Get.find();
+    workController.onInit();
+    Get.back();
+  }
   void selectAlarm(){
     alarm.value=!alarm.value;
     print('alarm ${alarm.value}');

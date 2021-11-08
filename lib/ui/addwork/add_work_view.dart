@@ -68,7 +68,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                 Utils.getSpaceView(SizeConst.w10, 0),
                                 Container(
                                   child: Text(
-                                    'Thêm mới',
+                                    'addnew'.tr,
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -199,7 +199,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Nhiệm vụ',
+                              'mission'.tr,
                               style: TextStyle(
                                   fontSize: SizeConst.size18,
                                   color: ColorConstant.black,
@@ -215,7 +215,6 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                 controller: controller.tecNoiDungCongViec,
                                 onChanged: (value) {
                                   controller.onChange();
-                                  print('ooooo');
                                 },
                                 autofocus: false,
                                 maxLines: 6,
@@ -230,7 +229,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                         bottom: 11,
                                         top: 11,
                                         right: 15),
-                                    hintText: "Nội dung công việc..."),
+                                    hintText: "workcontent".tr),
                               ),
                             ),
                             Utils.getSpaceView(0, SizeConst.h24),
@@ -254,7 +253,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Bắt đầu',
+                                        'start'.tr,
                                         style: TextStyle(
                                             fontSize: SizeConst.size18,
                                             color: ColorConstant.black,
@@ -283,7 +282,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Kết thúc',
+                                        'end'.tr,
                                         style: TextStyle(
                                             fontSize: SizeConst.size18,
                                             color: ColorConstant.black,
@@ -299,7 +298,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                             ),
                             Utils.getSpaceView(0, SizeConst.h24),
                             Text(
-                              'Mức độ ưu tiên',
+                              'prioritylevel'.tr,
                               style: TextStyle(
                                   fontSize: SizeConst.size18,
                                   color: ColorConstant.black,
@@ -317,7 +316,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                     children: [
                                       Obx(
                                         () => Utils.customContainerStatus(
-                                            title: 'Quan trọng',
+                                            title: 'important'.tr,
                                             color: controller.clickStatus1.value
                                                 ? ColorConstant.status1
                                                 : Colors.grey[200],
@@ -328,7 +327,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                       ),
                                       Obx(
                                         () => Utils.customContainerStatus(
-                                            title: 'Khẩn cấp',
+                                            title:'emergency'.tr,
                                             color: controller.clickStatus2.value
                                                 ? ColorConstant.status2
                                                 : Colors.grey[200],
@@ -345,7 +344,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                   children: [
                                     Obx(
                                       () => Utils.customContainerStatus(
-                                          title: 'Không quan trọng',
+                                          title: 'notimportant'.tr,
                                           color: controller.clickStatus1.value
                                               ? Colors.grey[200]
                                               : ColorConstant.status3,
@@ -356,7 +355,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                     ),
                                     Obx(
                                       () => Utils.customContainerStatus(
-                                          title: 'Không khẩn cấp',
+                                          title: 'noturgent'.tr,
                                           color: controller.clickStatus2.value
                                               ? Colors.grey[200]
                                               : ColorConstant.status4,
@@ -371,7 +370,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                             ),
                             Utils.getSpaceView(0, SizeConst.h24),
                             Text(
-                              'Nhắc nhở',
+                              'remind'.tr,
                               style: TextStyle(
                                   fontSize: SizeConst.size18,
                                   color: ColorConstant.black,
@@ -425,7 +424,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                                 )),
                                             Utils.getSpaceView(
                                                 SizeConst.w10, 0),
-                                            Text('Alarm')
+                                            Text('alarm'.tr)
                                           ],
                                         ),
                                         Utils.getSpaceView(SizeConst.w100, 0),
@@ -449,7 +448,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                                 )),
                                             Utils.getSpaceView(
                                                 SizeConst.w10, 0),
-                                            Text('Notification')
+                                            Text('notification'.tr)
                                           ],
                                         ),
                                       ],
@@ -469,7 +468,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                                       : Colors.grey),
                                             )),
                                         Utils.getSpaceView(SizeConst.w10, 0),
-                                        Text('Đánh giá KPI')
+                                        Text('evaluate'.tr)
                                       ],
                                     )
                                   ],
@@ -489,7 +488,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                     borderRadius:
                                         BorderRadius.circular(SizeConst.r8),
                                     color: ColorConstant.blue1),
-                                child: Text('Lưu',
+                                child: Text('save'.tr,
                                     style: TextStyle(
                                         fontSize: SizeConst.size20,
                                         color: ColorConstant.white,

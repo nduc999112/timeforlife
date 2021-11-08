@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:timeforlife/commons/constant/string_constant.dart';
 import 'package:timeforlife/ui/homepage/homepage_view.dart';
 import 'package:timeforlife/ui/register/registerview.dart';
-import 'package:timeforlife/ui/work/work_view.dart';
+
 
 class LoginController extends GetxController {
 
@@ -26,7 +26,6 @@ class LoginController extends GetxController {
   Rx<dynamic> errUsername = Rxn();
   Rx<dynamic> errPassword = Rxn();
   Rx<dynamic> errRePassword = Rxn();
-
 
   validateUsername() {
     username.value = tecUsername.value.text.toString().trim();

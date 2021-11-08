@@ -15,6 +15,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.white,
       body: 
       SingleChildScrollView(
         child: Column(
@@ -40,16 +41,16 @@ class RegisterScreen extends GetWidget<RegisterController> {
                     Utils.getSpaceView(0, SizeConst.h50),
                     Obx(()=>Utils.textFormFiled(
                         registerController.tecUsername,
-                        hintText: 'Tên tài khoản',
-                        labelText: 'Tên tài khoản',
+                        hintText: 'user'.tr,
+                        labelText: 'user'.tr,
                         errorText: registerController.errUsername.value,
                         onChange: ()=>registerController.validateUsername()),
                     ),
                     Utils.getSpaceView(0, SizeConst.h24),
                     Obx(()=>Utils.textFormFiled(
                       registerController.tecPassword,
-                      hintText: 'Mật khẩu',
-                      labelText: 'Mật khẩu',
+                      hintText: 'pass'.tr,
+                      labelText: 'pass'.tr,
                         errorText: registerController.errPassword.value,
                         onChange: ()=>registerController.validatePassWord(),
                       obscure: true,
@@ -57,8 +58,8 @@ class RegisterScreen extends GetWidget<RegisterController> {
                     Utils.getSpaceView(0, SizeConst.h24),
                     Obx(()=>Utils.textFormFiled(
                       registerController.tecRePassword,
-                      hintText: 'Xác nhận mật khẩu',
-                      labelText: 'Xác nhận mật khẩu',
+                      hintText: 'confirmpassword'.tr,
+                      labelText: 'confirmpassword'.tr,
                       errorText: registerController.errRePassword.value,
                       onChange: ()=>registerController.validateRePassWord(),
                       obscure: true,
@@ -74,7 +75,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(SizeConst.r8),
                             color: ColorConstant.blue1),
-                        child: Text('Đăng ký',
+                        child: Text('register'.tr,
                             style: TextStyle(
                                 fontSize: SizeConst.size20,
                                 color: ColorConstant.white,
@@ -85,13 +86,13 @@ class RegisterScreen extends GetWidget<RegisterController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Bạn đã có tài khoản ? '),
+                        Text('haveacount'.tr),
                         InkWell(
                           onTap: () {
                             Get.back();
                           },
                           child: Text(
-                            'Đăng nhập ngay',
+                            'loginnow'.tr,
                             style: TextStyle(
                                 fontSize: SizeConst.size16,
                                 color: ColorConstant.blue1,
@@ -102,7 +103,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
                     ),
                     Utils.getSpaceView(0, SizeConst.h10),
                     Text(
-                      'Hoặc đăng nhập qua',
+                      'loginvia'.tr,
                       style: TextStyle(
                         fontSize: SizeConst.size14,
                       ),

@@ -1,12 +1,15 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:timeforlife/NotificationApi.dart';
-import 'package:timeforlife/ui/work/work_controller.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import '../../NotificationApi.dart';
+import 'package:timeforlife/notification.dart';
+import 'package:timeforlife/ui/work/work_controller.dart';
+
+
+import '../../notification.dart';
 class NotificationController extends GetxController {
   RxList<Work> listnotification = RxList<Work>();
   User ?user;
@@ -19,7 +22,8 @@ class NotificationController extends GetxController {
     // var two = format.parse("18:20");
     // var data=format.parse('${two.difference(one)}');
     // print('ok $data');
-    NotificationService().showNotification(1,'ok','ok',1);
+    // NotificationService().showNotification(1,'ok','ok',1);
+    NotificationService().init();
     WorkController workController=Get.find();
     user=workController.user;
     getData();
@@ -36,7 +40,7 @@ class NotificationController extends GetxController {
   void getData() async {
     //addValueEventListener
     var date = DateTime.now();
-
+    log('dateee: $date');
     var inputFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
     var formatHours = DateFormat('HH:mm:SS.ssssss');
 
@@ -82,6 +86,8 @@ class NotificationController extends GetxController {
             print('check ${check}');
             print('du ${duration}');
             if(duration>=check){
+              NotificationService().showNotification();
+
               print('báo thức');
               listnotification.add(work);
             }

@@ -5,6 +5,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:timeforlife/commons/constant/color_constant.dart';
 import 'package:timeforlife/commons/constant/size_const.dart';
 import 'package:timeforlife/commons/utils/utils.dart';
@@ -22,7 +24,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: ColorConstant.blue1,
+            color: context.theme.scaffoldBackgroundColor
         ),
         Container(
           height: SizeConst.h250,
@@ -45,7 +47,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Thống kê',
+                      'statistical'.tr,
                       style: TextStyle(
                           fontSize: SizeConst.size20,
                           color: ColorConstant.white,
@@ -69,19 +71,19 @@ class StatisticalView extends GetWidget<StatisticalController> {
                       child: Utils.customStaticfical(
                           colors: Colors.white,
                           colorText: ColorConstant.blue1,
-                          text: 'Ngày'),
+                          text: 'day'.tr),
                     ),
                     Tab(
                       child: Utils.customStaticfical(
                           colors: Colors.white,
                           colorText: ColorConstant.blue1,
-                          text: 'Tháng'),
+                          text: 'month'.tr),
                     ),
                     Tab(
                       child: Utils.customStaticfical(
                           colors: Colors.white,
                           colorText: ColorConstant.blue1,
-                          text: 'Năm'),
+                          text: 'year'.tr),
                     )
                   ],
                 ),
@@ -218,14 +220,14 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                         () => Utils.customContianerStatistical(
                                             work: controller.listfail,
                                             textTitle:
-                                                'Đang thực hiện: ${controller.totalfails} / ${controller.totalWork}'),
+                                                '${'processing'.tr}: ${controller.totalfails} / ${controller.totalWork}'),
                                       ),
                                       Utils.getSpaceView(0, SizeConst.h16),
                                       Obx(
                                         () => Utils.customContianerStatistical(
                                             work: controller.listComplete,
                                             textTitle:
-                                                'Hoàn thành ${controller.totalcomplete} / ${controller.totalWork}'),
+                                                '${'complete'.tr} ${controller.totalcomplete} / ${controller.totalWork}'),
                                       )
                                     ],
                                   ),
@@ -295,22 +297,22 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                                           String>(
                                                       dataSource: [
                                                         SalesData(
-                                                            "Tuần 1",
+                                                            "${'week'.tr} 1",
                                                             controller
                                                                 .week1.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tuần 2",
+                                                            "${'week'.tr} 2",
                                                             controller
                                                                 .week2.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tuần 3",
+                                                            "${'week'.tr} 3",
                                                             controller
                                                                 .week3.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tuần 4",
+                                                            "${'week'.tr} 4",
                                                             controller
                                                                 .week4.value
                                                                 .toDouble()),
@@ -337,7 +339,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                       ),
                                       Center(
                                         child: Text(
-                                          'Tổng điểm KPI: 4/6',
+                                          '${'totalscore'.tr} : 4/6',
                                           style: TextStyle(
                                               fontSize: SizeConst.size20,
                                               color: ColorConstant.black,
@@ -350,7 +352,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                           child: Column(
                                             children: [
                                               Utils.customContainerStacticMonth(
-                                                  title: "Tuần 1",
+                                                  title: "${'week'.tr} 1",
                                                   point:
                                                       '${controller.poinweek1}',
                                                   work: '${controller.week1}',
@@ -359,7 +361,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                                   fail:
                                                       '${controller.totalfailweek1}'),
                                               Utils.customContainerStacticMonth(
-                                                  title: "Tuần 2",
+                                                  title: "${'week'.tr} 2",
                                                   point:
                                                       '${controller.poinweek2}',
                                                   work: '${controller.week2}',
@@ -368,7 +370,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                                   fail:
                                                       '${controller.totalfailweek2}'),
                                               Utils.customContainerStacticMonth(
-                                                  title: "Tuần 3",
+                                                  title: "${'week'.tr} 3",
                                                   point:
                                                       '${controller.poinweek3}',
                                                   work: '${controller.week3}',
@@ -377,7 +379,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                                   fail:
                                                       '${controller.totalfailweek3}'),
                                               Utils.customContainerStacticMonth(
-                                                  title: "Tuần 4",
+                                                  title: "${'week'.tr} 4",
                                                   point:
                                                       '${controller.poinweek4}',
                                                   work: '${controller.week4}',
@@ -462,62 +464,62 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                                           String>(
                                                       dataSource: [
                                                         SalesData(
-                                                            "Tháng 1",
+                                                            "${'month'.tr} 1",
                                                             controller
                                                                 .month1.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 2",
+                                                            "${'month'.tr} 2",
                                                             controller
                                                                 .month2.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 3",
+                                                            "${'month'.tr} 3",
                                                             controller
                                                                 .month3.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 4",
+                                                            "${'month'.tr} 4",
                                                             controller
                                                                 .month4.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 5",
+                                                            "${'month'.tr} 5",
                                                             controller
                                                                 .month5.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 6",
+                                                            "${'month'.tr} 6",
                                                             controller
                                                                 .month6.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 7",
+                                                            "${'month'.tr} 7",
                                                             controller
                                                                 .month7.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 8",
+                                                            "${'month'.tr} 8",
                                                             controller
                                                                 .month8.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 9",
+                                                            "${'month'.tr} 9",
                                                             controller
                                                                 .month9.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 10",
+                                                            "${'month'.tr} 10",
                                                             controller
                                                                 .month10.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 11",
+                                                            "${'month'.tr} 11",
                                                             controller
                                                                 .month11.value
                                                                 .toDouble()),
                                                         SalesData(
-                                                            "Tháng 12",
+                                                            "${'month'.tr} 12",
                                                             controller
                                                                 .month12.value
                                                                 .toDouble()),
@@ -544,7 +546,7 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                       ),
                                       Center(
                                         child: Text(
-                                          'Tổng điểm KPI: 4/6',
+                                          '${'totalscore'.tr}: 4/6',
                                           style: TextStyle(
                                               fontSize: SizeConst.size20,
                                               color: ColorConstant.black,
@@ -557,84 +559,84 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                          child: Column(
                                            children: [
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 1",
+                                                 title: "${'month'.tr} 1",
                                                  point: '${controller.kpiyearm1.value}',
                                                  work:
                                                  '${controller.month1.value}',
                                                  complete: '${controller.workcompltem1.value}',
                                                  fail: '${controller.workfailm1.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 2",
+                                                 title: "${'month'.tr} 2",
                                                  point: '${controller.kpiyearm2.value}',
                                                  work:
                                                  '${controller.month2.value}',
                                                  complete: '${controller.workcompltem2.value}',
                                                  fail: '${controller.workfailm2.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 3",
+                                                 title: "${'month'.tr} 3",
                                                  point: '${controller.kpiyearm3.value}',
                                                  work:
                                                  '${controller.month3.value}',
                                                  complete: '${controller.workcompltem3.value}',
                                                  fail: '${controller.workfailm3.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 4",
+                                                 title: "${'month'.tr} 4",
                                                  point: '${controller.kpiyearm4.value}',
                                                  work:
                                                  '${controller.month4.value}',
                                                  complete: '${controller.workcompltem4.value}',
                                                  fail: '${controller.workfailm4.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 5",
+                                                 title: "${'month'.tr} 5",
                                                  point: '${controller.kpiyearm5.value}',
                                                  work:
                                                  '${controller.month5.value}',
                                                  complete: '${controller.workcompltem5.value}',
                                                  fail: '${controller.workfailm5.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 6",
+                                                 title:"${'month'.tr} 6",
                                                  point: '${controller.kpiyearm6.value}',
                                                  work:
                                                  '${controller.month6.value}',
                                                  complete: '${controller.workcompltem6.value}',
                                                  fail: '${controller.workfailm6.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 7",
+                                                 title: "${'month'.tr} 7",
                                                  point: '${controller.kpiyearm7.value}',
                                                  work:
                                                  '${controller.month7.value}',
                                                  complete: '${controller.workcompltem7.value}',
                                                  fail: '${controller.workfailm7.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 8",
+                                                 title: "${'month'.tr} 8",
                                                  point: '${controller.kpiyearm8.value}',
                                                  work:
                                                  '${controller.month8.value}',
                                                  complete: '${controller.workcompltem8.value}',
                                                  fail: '${controller.workfailm8.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 9",
+                                                 title: "${'month'.tr} 9",
                                                  point: '${controller.kpiyearm9.value}',
                                                  work:
                                                  '${controller.month9.value}',
                                                  complete: '${controller.workcompltem9.value}',
                                                  fail: '${controller.workfailm9.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 10",
+                                                 title: "${'month'.tr} 10",
                                                  point: '${controller.kpiyearm10.value}',
                                                  work:
                                                  '${controller.month10.value}',
                                                  complete: '${controller.workcompltem10.value}',
                                                  fail: '${controller.workfailm10.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 11",
+                                                 title: "${'month'.tr} 11",
                                                  point: '${controller.kpiyearm11.value}',
                                                  work:
                                                  '${controller.month11.value}',
                                                  complete: '${controller.workcompltem11.value}',
                                                  fail: '${controller.workfailm11.value}'),
                                              Utils.customContainerStacticMonth(
-                                                 title: "Tháng 12",
+                                                 title: "${'month'.tr} 12",
                                                  point: '${controller.kpiyearm12.value}',
                                                  work:
                                                  '${controller.month12.value}',

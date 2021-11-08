@@ -1,66 +1,75 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-class NotificationService {
-  static final NotificationService _notificationService = NotificationService._internal();
+class NotificationHome extends StatefulWidget {
 
-  factory NotificationService() {
-    return _notificationService;
+
+  @override
+  _NotificationState createState() => _NotificationState();
+}
+
+class _NotificationState extends State<NotificationHome> {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =FlutterLocalNotificationsPlugin();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('notification');
+    var initializationSettingsIOs = IOSInitializationSettings();
+    var initSetttings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOs);
+    flutterLocalNotificationsPlugin.initialize(initSetttings,
+        );
+    showNotification();
   }
-
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  NotificationService._internal();
-
-  Future<void> initNotification() async {
-    final AndroidInitializationSettings initializationSettingsAndroid =
-    AndroidInitializationSettings('@drawable/ic_flutternotification');
-
-    final IOSInitializationSettings initializationSettingsIOS =
-    IOSInitializationSettings(
-      requestAlertPermission: false,
-      requestBadgePermission: false,
-      requestSoundPermission: false,
+  showNotification() async {
+    var android = new AndroidNotificationDetails(
+        'id', 'channel ', 'description',
+        priority: Priority.high, importance: Importance.max,playSound: true,sound: RawResourceAndroidNotificationSound('notification'), );
+    var iOS = new IOSNotificationDetails();
+    var platform = new NotificationDetails(android: android, iOS: iOS);
+    await flutterLocalNotificationsPlugin.show(
+        0, 'Flutter devs', 'Flutter Local Notification Demo', platform,
+        payload: 'Welcome to the Local Notification demo ',);
+  }
+  Future<void> scheduleNotification() async {
+    var scheduledNotificationDateTime =
+    DateTime.now().add(Duration(seconds: 1));
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      'channel id',
+      'channel name',
+      'channel description',
+      playSound: true,
     );
-
-    final InitializationSettings initializationSettings =
-    InitializationSettings(
-        android: initializationSettingsAndroid,
-        iOS: initializationSettingsIOS
-    );
-
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+    var platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.schedule(
+        0,
+        'scheduled title',
+        'scheduled body',
+        scheduledNotificationDateTime,
+        platformChannelSpecifics);
   }
-
-  Future<void> showNotification(int id, String title, String body, int seconds) async {
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-      id,
-      title,
-      body,
-      tz.TZDateTime.now(tz.local).add(Duration(seconds: seconds)),
-      const NotificationDetails(
-        android: AndroidNotificationDetails(
-            'main_channel',
-            'Main Channel',
-            'Main channel notifications',
-            importance: Importance.max,
-            priority: Priority.max,
-            icon: '@drawable/ic_flutternotification'
-        ),
-        iOS: IOSNotificationDetails(
-          sound: 'default.wav',
-          presentAlert: true,
-          presentBadge: true,
-          presentSound: true,
-        ),
-      ),
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-      androidAllowWhileIdle: true,
-    );
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
-
-  Future<void> cancelAllNotifications() async {
-    await flutterLocalNotificationsPlugin.cancelAll();
-  }
+}
+class NewScreen extends StatelessWidget {
+  String payload;
+  NewScreen({
+    required this.payload,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(payload),
+      ),);}
 }

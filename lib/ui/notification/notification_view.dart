@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:timeforlife/commons/constant/app_constant.dart';
+
 import 'package:timeforlife/commons/constant/color_constant.dart';
 import 'package:timeforlife/commons/constant/size_const.dart';
 import 'package:timeforlife/commons/utils/utils.dart';
@@ -19,7 +19,7 @@ class NotificationView extends GetWidget<NotificationController> {
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: ColorConstant.blue1,
+            color: context.theme.scaffoldBackgroundColor
         ),
         Container(
           height: SizeConst.h250,
@@ -43,7 +43,7 @@ class NotificationView extends GetWidget<NotificationController> {
                         top: SizeConst.h32, left: SizeConst.w10),
                     height: SizeConst.h50,
                     child: Text(
-                      'Thông báo',
+                      'notification'.tr,
                       style: TextStyle(
                           fontSize: SizeConst.size20,
                           color: ColorConstant.white,
@@ -75,7 +75,7 @@ class NotificationView extends GetWidget<NotificationController> {
                                  ),
                                ),
                                Utils.getSpaceView(0, SizeConst.h20),
-                               Text('Hiện không có thông báo nào',style: TextStyle(color: Colors.black,fontSize: 20),)
+                               Text('nontification'.tr,style: TextStyle(color: Colors.black,fontSize: 20),)
                              ],
                            )):ListView.builder(
                            itemCount: controller.listnotification.length,

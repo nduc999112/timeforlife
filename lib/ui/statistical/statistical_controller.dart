@@ -149,11 +149,13 @@ class StatisticalController extends GetxController {
         .equalTo(formatDate())
         .once()
         .then((DataSnapshot dataSnapshot) {
-      var data = dataSnapshot.value.keys;
-      var total = [];
-      data.forEach((v) => total.add(v));
-      print('length total ${total.length + 1}');
-      totalWork.value = total.length + 1;
+      if(dataSnapshot.exists){
+        var data = dataSnapshot.value.keys;
+        var total = [];
+        data.forEach((v) => total.add(v));
+        print('length total ${total.length + 1}');
+        totalWork.value = total.length + 1;
+      }
     });
   }
 
@@ -307,8 +309,8 @@ class StatisticalController extends GetxController {
             notification: values[key]['notification'],
           );
           var datetime = work.dateTime;
-
-          String yeardata = formarYearData(datetime!);
+          if(datetime!=null){
+          String yeardata = formarYearData(datetime);
           String yearinput = formarYearInput();
 
           String monthdata = formarMonthData(datetime);
@@ -374,7 +376,7 @@ class StatisticalController extends GetxController {
           }
 
           print('check week $week1 $week2 $week3 $week4');
-        }
+        }}
       } else {}
     });
   }
@@ -468,154 +470,156 @@ class StatisticalController extends GetxController {
           );
           var datetime = work.dateTime;
 
-          String yeardata = formarYearData(datetime!);
-          String yearinput = formarYearInput();
+          if(datetime!=null){
+            String yeardata = formarYearData(datetime);
+            String yearinput = formarYearInput();
 
-          String monthdata = formarMonthData(datetime);
+            String monthdata = formarMonthData(datetime);
 
-          if (yeardata == yearinput) {
-            if(int.parse(monthdata)==01){
-              month1++;
-              if(work.kpi==true){
-                kpiyearm1++;
+            if (yeardata == yearinput) {
+              if(int.parse(monthdata)==01){
+                month1++;
+                if(work.kpi==true){
+                  kpiyearm1++;
+                }
+                if(work.kpi==false){
+                  workfailm1++;
+                }
+                if(work.status==true){
+                  workcompltem1++;
+                }
               }
-              if(work.kpi==false){
-                workfailm1++;
+              if(int.parse(monthdata)==02){
+                month2++;
+                if(work.kpi==true){
+                  kpiyearm2++;
+                }
+                if(work.kpi==false){
+                  workfailm2++;
+                }
+                if(work.status==true){
+                  workcompltem2++;
+                }
               }
-              if(work.status==true){
-                workcompltem1++;
+              if(int.parse(monthdata)==03){
+                month3++;
+                if(work.kpi==true){
+                  kpiyearm3++;
+                }
+                if(work.kpi==false){
+                  workfailm3++;
+                }
+                if(work.status==true){
+                  workcompltem3++;
+                }
               }
-            }
-            if(int.parse(monthdata)==02){
-              month2++;
-              if(work.kpi==true){
-                kpiyearm2++;
+              if(int.parse(monthdata)==04){
+                month4++;
+                if(work.kpi==true){
+                  kpiyearm4++;
+                }
+                if(work.kpi==false){
+                  workfailm4++;
+                }
+                if(work.status==true){
+                  workcompltem4++;
+                }
               }
-              if(work.kpi==false){
-                workfailm2++;
+              if(int.parse(monthdata)==05){
+                month5++;
+                if(work.kpi==true){
+                  kpiyearm5++;
+                }
+                if(work.kpi==false){
+                  workfailm5++;
+                }
+                if(work.status==true){
+                  workcompltem5++;
+                }
               }
-              if(work.status==true){
-                workcompltem2++;
+              if(int.parse(monthdata)==06){
+                month6++;
+                if(work.kpi==true){
+                  kpiyearm6++;
+                }
+                if(work.kpi==false){
+                  workfailm6++;
+                }
+                if(work.status==true){
+                  workcompltem6++;
+                }
               }
-            }
-            if(int.parse(monthdata)==03){
-              month3++;
-              if(work.kpi==true){
-                kpiyearm3++;
+              if(int.parse(monthdata)==07){
+                month7++;
+                if(work.kpi==true){
+                  kpiyearm7++;
+                }
+                if(work.kpi==false){
+                  workfailm7++;
+                }
+                if(work.status==true){
+                  workcompltem7++;
+                }
               }
-              if(work.kpi==false){
-                workfailm3++;
+              if(int.parse(monthdata)==08){
+                month8++;
+                if(work.kpi==true){
+                  kpiyearm8++;
+                }
+                if(work.kpi==false){
+                  workfailm8++;
+                }
+                if(work.status==true){
+                  workcompltem8++;
+                }
               }
-              if(work.status==true){
-                workcompltem3++;
+              if(int.parse(monthdata)==09){
+                month9++;
+                if(work.kpi==true){
+                  kpiyearm9++;
+                }
+                if(work.kpi==false){
+                  workfailm9++;
+                }
+                if(work.status==true){
+                  workcompltem9++;
+                }
               }
-            }
-            if(int.parse(monthdata)==04){
-              month4++;
-              if(work.kpi==true){
-                kpiyearm4++;
+              if(int.parse(monthdata)==10){
+                month10++;
+                if(work.kpi==true){
+                  kpiyearm10++;
+                }
+                if(work.kpi==false){
+                  workfailm10++;
+                }
+                if(work.status==true){
+                  workcompltem10++;
+                }
               }
-              if(work.kpi==false){
-                workfailm4++;
+              if(int.parse(monthdata)==11){
+                month11++;
+                if(work.kpi==true){
+                  kpiyearm11++;
+                }
+                if(work.kpi==false){
+                  workfailm11++;
+                }
+                if(work.status==true){
+                  workcompltem11++;
+                }
               }
-              if(work.status==true){
-                workcompltem4++;
-              }
-            }
-            if(int.parse(monthdata)==05){
-              month5++;
-              if(work.kpi==true){
-                kpiyearm5++;
-              }
-              if(work.kpi==false){
-                workfailm5++;
-              }
-              if(work.status==true){
-                workcompltem5++;
-              }
-            }
-            if(int.parse(monthdata)==06){
-              month6++;
-              if(work.kpi==true){
-                kpiyearm6++;
-              }
-              if(work.kpi==false){
-                workfailm6++;
-              }
-              if(work.status==true){
-                workcompltem6++;
-              }
-            }
-            if(int.parse(monthdata)==07){
-              month7++;
-              if(work.kpi==true){
-                kpiyearm7++;
-              }
-              if(work.kpi==false){
-                workfailm7++;
-              }
-              if(work.status==true){
-                workcompltem7++;
-              }
-            }
-            if(int.parse(monthdata)==08){
-              month8++;
-              if(work.kpi==true){
-                kpiyearm8++;
-              }
-              if(work.kpi==false){
-                workfailm8++;
-              }
-              if(work.status==true){
-                workcompltem8++;
-              }
-            }
-            if(int.parse(monthdata)==09){
-              month9++;
-              if(work.kpi==true){
-                kpiyearm9++;
-              }
-              if(work.kpi==false){
-                workfailm9++;
-              }
-              if(work.status==true){
-                workcompltem9++;
-              }
-            }
-            if(int.parse(monthdata)==10){
-              month10++;
-              if(work.kpi==true){
-                kpiyearm10++;
-              }
-              if(work.kpi==false){
-                workfailm10++;
-              }
-              if(work.status==true){
-                workcompltem10++;
-              }
-            }
-            if(int.parse(monthdata)==11){
-              month11++;
-              if(work.kpi==true){
-                kpiyearm11++;
-              }
-              if(work.kpi==false){
-                workfailm11++;
-              }
-              if(work.status==true){
-                workcompltem11++;
-              }
-            }
-            if(int.parse(monthdata)==12){
-              month12++;
-              if(work.kpi==true){
-                kpiyearm12++;
-              }
-              if(work.kpi==false){
-                workfailm12++;
-              }
-              if(work.status==true){
-                workcompltem12++;
+              if(int.parse(monthdata)==12){
+                month12++;
+                if(work.kpi==true){
+                  kpiyearm12++;
+                }
+                if(work.kpi==false){
+                  workfailm12++;
+                }
+                if(work.status==true){
+                  workcompltem12++;
+                }
               }
             }
           }

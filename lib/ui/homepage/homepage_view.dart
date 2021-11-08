@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:get/get.dart';
-import 'package:timeforlife/commons/constant/app_constant.dart';
+
 import 'package:timeforlife/commons/constant/color_constant.dart';
 import 'package:timeforlife/commons/constant/size_const.dart';
 import 'package:timeforlife/ui/notification/notification_view.dart';
@@ -52,7 +52,7 @@ class HomePageUI extends StatelessWidget {
               title: Padding(
                 padding: EdgeInsets.only(top: SizeConst.pad10),
                 child: Text(
-                  'Công việc',
+                  'Work'.tr,
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 ),
@@ -63,7 +63,7 @@ class HomePageUI extends StatelessWidget {
               title: Padding(
                 padding: EdgeInsets.only(top: SizeConst.pad10),
                 child: Text(
-                  'Thống kê',
+                  'statistical'.tr,
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 ),
@@ -74,7 +74,7 @@ class HomePageUI extends StatelessWidget {
               title: Padding(
                 padding: EdgeInsets.only(top: SizeConst.pad10),
                 child: Text(
-                  'Thông báo',
+                  'notification'.tr,
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 ),
@@ -85,7 +85,7 @@ class HomePageUI extends StatelessWidget {
               title: Padding(
                 padding: EdgeInsets.only(top: SizeConst.pad10),
                 child: Text(
-                  'Cài đặt',
+                  'setting'.tr,
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 ),

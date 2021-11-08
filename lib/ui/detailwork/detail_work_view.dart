@@ -21,7 +21,7 @@ class DetailWorkView extends GetWidget<DetailWorkController> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: ColorConstant.blue1,
+              color: context.theme.scaffoldBackgroundColor
           ),
           Container(
             height: SizeConst.h250,
@@ -127,6 +127,7 @@ class DetailWorkView extends GetWidget<DetailWorkController> {
                                                   ),
                                                   onTap: (){
                                                     controller.deleteData();
+                                                    // controller.toWorkView();
                                                   },
                                                 )
                                               ],
@@ -545,6 +546,7 @@ class DetailWorkView extends GetWidget<DetailWorkController> {
                                   InkWell(
                                     onTap: () {
                                       controller.updateData();
+                                      // controller.toWorkView();
                                     },
                                     child: Container(
                                       alignment: Alignment.center,

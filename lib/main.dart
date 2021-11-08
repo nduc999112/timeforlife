@@ -1,19 +1,24 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timeforlife/translation/Messages.dart';
 import 'package:timeforlife/ui/login/loginscreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
-import 'NotificationApi.dart';
+
 import 'commons/constant/color_constant.dart';
 
 
+Future<void> _messageHandler(RemoteMessage message) async {
+  print('background message ${message.notification!.body}');
+}
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  NotificationService().initNotification();
+  FirebaseMessaging.onBackgroundMessage(_messageHandler);
   runApp( MyApp());
 }
 
@@ -34,10 +39,8 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: [
               GlobalMaterialLocalizations.delegate,
             ],
-            supportedLocales: [
-              Locale('vi', 'VI'),
-            ],
-            locale: Locale('vi', 'VI'),
+            translations: LocaleString(),
+            locale: Locale('vi','VN'),
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               // accentColor: Colors.blueAccent,
@@ -47,7 +50,8 @@ class MyApp extends StatelessWidget {
               // brightness: Brightness.dark,
               // primarySwatch: Colors.blue,
               // visualDensity: VisualDensity.adaptivePlatformDensity,
-
+              scaffoldBackgroundColor: ColorConstant.blue1,
+              backgroundColor:ColorConstant.blue1,
               textSelectionTheme: TextSelectionThemeData(
                   cursorColor: Colors.blueAccent),
             ),

@@ -42,7 +42,7 @@ class AddWorkController extends GetxController{
   Rx<dynamic> noiDungCongViec = Rxn();
 
   TimeOfDay time = TimeOfDay.now().replacing(minute: 30);
-  var language = <String>['Hàng ngày', 'Theo ngày'];
+  var language = <String>['daily'.tr, 'Theo ngày'];
 
   final databaseRef=FirebaseDatabase.instance.reference();
 

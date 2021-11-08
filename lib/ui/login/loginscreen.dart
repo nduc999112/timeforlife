@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:timeforlife/commons/constant/app_constant.dart';
 import 'package:timeforlife/commons/constant/color_constant.dart';
 import 'package:timeforlife/commons/constant/size_const.dart';
-import 'package:timeforlife/commons/constant/string_constant.dart';
 import 'package:timeforlife/commons/utils/utils.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,6 +16,7 @@ class LoginScreen extends GetWidget<LoginController> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.white,
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
@@ -35,7 +33,7 @@ class LoginScreen extends GetWidget<LoginController> {
                       allowDrawingOutsideViewBox: true,
                     ),
                     Utils.getSpaceView(0, SizeConst.h10),
-                    Text(StringConstant.titleLogin,
+                    Text('title'.tr,
                         style: TextStyle(
                           fontSize: SizeConst.size20,
                           color: ColorConstant.black,
@@ -44,13 +42,13 @@ class LoginScreen extends GetWidget<LoginController> {
                     Utils.getSpaceView(0, SizeConst.h50),
                     Utils.textFormFiled(_loginController.tecUsername,
                         onChange: ()=>_loginController.validateUsername(),
-                        hintText: 'Tên tài khoản', labelText: 'Tên tài khoản'),
+                        hintText: 'user'.tr, labelText: 'user'.tr),
                     Utils.getSpaceView(0, SizeConst.h24),
                     Utils.textFormFiled(
                       _loginController.tecPassword,
                       onChange: ()=>_loginController.validatePassWord(),
-                      hintText: 'Mật khẩu',
-                      labelText: 'Mật khẩu',
+                      hintText: 'pass'.tr,
+                      labelText: 'pass'.tr,
                       obscure: true,
                     ),
                     Utils.getSpaceView(0, SizeConst.h24),
@@ -64,7 +62,7 @@ class LoginScreen extends GetWidget<LoginController> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(SizeConst.r8),
                             color: ColorConstant.blue1),
-                        child: Text('Đăng nhập',
+                        child: Text('login'.tr,
                             style: TextStyle(
                                 fontSize: SizeConst.size20,
                                 color: ColorConstant.white,
@@ -75,13 +73,13 @@ class LoginScreen extends GetWidget<LoginController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Chưa có tài khoản ? '),
+                        Text('no account'.tr),
                         InkWell(
                           onTap: () {
                             _loginController.gotoSignUp();
                           },
                           child: Text(
-                            'Đăng ký ngay',
+                            'Register now'.tr,
                             style: TextStyle(
                                 fontSize: SizeConst.size16,
                                 color: ColorConstant.blue1,
@@ -92,7 +90,7 @@ class LoginScreen extends GetWidget<LoginController> {
                     ),
                     Utils.getSpaceView(0, SizeConst.h10),
                     Text(
-                      'Hoặc đăng nhập qua',
+                      'loginvia'.tr,
                       style: TextStyle(
                         fontSize: SizeConst.size14,
                       ),

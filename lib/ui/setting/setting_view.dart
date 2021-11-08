@@ -1,10 +1,12 @@
-import 'package:dotted_line/dotted_line.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:timeforlife/commons/constant/color_constant.dart';
 import 'package:timeforlife/commons/constant/size_const.dart';
 import 'package:timeforlife/commons/utils/utils.dart';
@@ -21,7 +23,7 @@ class SettingView extends GetWidget<SettingController> {
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: ColorConstant.blue1,
+            color: context.theme.scaffoldBackgroundColor
         ),
         Container(
           height: SizeConst.h250,
@@ -44,7 +46,7 @@ class SettingView extends GetWidget<SettingController> {
                   children: [
                     Container(
                       margin: EdgeInsets.only(left: 20),
-                      child: Text('Cài đặt',
+                      child: Text('setting'.tr,
                           style: TextStyle(
                               fontSize: SizeConst.size20,
                               color: ColorConstant.white,
@@ -78,23 +80,33 @@ class SettingView extends GetWidget<SettingController> {
                           ),
                           child: Column(
                             children: [
-                              Utils.customitemSetting(image: 'assets/images/gear.png',title: 'Chọn màu theme',visiable: true,coloricon: Colors.blue),
-                              Utils.customitemSetting(image: 'assets/images/fill-color.png',title: 'Màu sắc độ',visiable: true,coloricon: Colors.deepPurple),
-                              Utils.customitemSetting2(image: 'assets/images/clock.png',title: 'Thời gian lập công việc',coloricon: Colors.deepOrangeAccent,title2: '09:00     ->    10:00'),
-                              Utils.customitemSetting2(image: 'assets/images/alarm-clock2.png',title: 'Thời gian kiểm tra lại công việc',coloricon: Colors.green,title2: '09:00     ->    10:00'),
-                              Utils.customitemSetting2(image: 'assets/images/iconmusic.png',title: 'Âm thanh thông báo',coloricon: Colors.green,title2: 'Mặc đinh(abcxyyyyy)'),
-                              Utils.customitemSetting2(image: 'assets/images/translation.png',title: 'Ngôn ngữ',coloricon: Colors.blue,title2: 'Tiếng việt'),
+                              Utils.customitemSetting(image: 'assets/images/gear.png',title: 'theme'.tr,visiable: true,coloricon: Colors.blue),
+                              InkWell(
+                                onTap: (){
+                                  controller.changeColor();
+                                },
+                                child: Utils.customitemSetting(image: 'assets/images/fill-color.png',title: 'degreecolor'.tr,visiable: true,coloricon: Colors.deepPurple),
+                              ),
+                              Utils.customitemSetting2(image: 'assets/images/clock.png',title: 'worktime'.tr,coloricon: Colors.deepOrangeAccent,title2: '09:00     ->    10:00'),
+                              Utils.customitemSetting2(image: 'assets/images/alarm-clock2.png',title: 'checktime'.tr,coloricon: Colors.green,title2: '09:00     ->    10:00'),
+                              Utils.customitemSetting2(image: 'assets/images/iconmusic.png',title: 'sound'.tr,coloricon: Colors.green,title2: 'Mặc đinh(abcxyyyyy)'),
+                              InkWell(
+                                onTap: (){
+                                  controller.changeLocation();
+                                },
+                                child: Utils.customitemSetting2(image: 'assets/images/translation.png',title: 'language'.tr,coloricon: Colors.blue,title2: 'textlanguage'.tr),
+                              ),
                               InkWell(
                                 onTap: (){
                                   Get.to(()=>InfoView());
                                 },
-                                child: Utils.customitemSetting(image: 'assets/images/information.png',title: 'Giới thiệu',visiable: true,coloricon: Colors.orange),
+                                child: Utils.customitemSetting(image: 'assets/images/information.png',title: 'introduce'.tr,visiable: true,coloricon: Colors.orange),
                               ),
                               InkWell(
                                 onTap: (){
                                   controller.signout();
                                 },
-                                child: Utils.customitemSetting(image: 'assets/images/logout.png',title: 'Đăng xuất',visiable: true,coloricon: Colors.green),
+                                child: Utils.customitemSetting(image: 'assets/images/logout.png',title: 'logout'.tr,visiable: true,coloricon: Colors.green),
                               ),
                               SizedBox(height: 50,)
                             ],
