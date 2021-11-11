@@ -17,6 +17,7 @@ class NotificationController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+
     // var format = DateFormat("HH:mm");
     // var one = format.parse("10:40");
     // var two = format.parse("18:20");
@@ -40,12 +41,9 @@ class NotificationController extends GetxController {
   void getData() async {
     //addValueEventListener
     var date = DateTime.now();
-    log('dateee: $date');
     var inputFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
     var formatHours = DateFormat('HH:mm:SS.ssssss');
-
     var inputDate = inputFormat.parse(date.toString());
-
     var outputFormat = DateFormat('dd/MM/yyyy').format(inputDate);
     listnotification.clear();
     await FirebaseDatabase.instance.reference().child("Work").child(user!.uid).orderByChild('DateTime').equalTo(outputFormat).once()
@@ -67,6 +65,7 @@ class NotificationController extends GetxController {
             id: values [key]['id'],
             kpi: values [key]['kpi'],
             notification: values [key]['notification'],
+            status: values [key]['Status']
           ); // print('check key ${work.key}');
           var inputFormatHous = DateFormat('HH:mm');
           var outputFormat1 = DateFormat('HH').format(inputDate);
@@ -80,6 +79,11 @@ class NotificationController extends GetxController {
 
           int duration=int.parse(DateFormat('mm').format(inputDuration));
 
+          var status=work.status;
+          if(status==false){
+            listnotification.add(work);
+          }
+
           if(outputFormat1==endtime){
             print('check durationo $endtime1 $outputFormat2');
             int check=int.parse(endtime1)-int.parse(outputFormat2);
@@ -92,6 +96,7 @@ class NotificationController extends GetxController {
               listnotification.add(work);
             }
           }
+
         }
       }else{
         print('no data');

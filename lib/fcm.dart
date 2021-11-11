@@ -18,13 +18,13 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
       print("message recieved");
-      print(event.notification!.body);
+      print(event.notification!.title);
       showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text("Notification"),
-              content: Text(event.notification!.body!),
+              content: Text(event.notification!.title!),
               actions: [
                 TextButton(
                   child: Text("Ok"),

@@ -15,6 +15,8 @@ class InfoController extends GetxController{
     // TODO: implement onInit
     WorkController workController=Get.find();
     user=workController.user;
+    getRating();
+    print('dataSnapshot.value111');
     super.onInit();
 
   }
@@ -28,5 +30,23 @@ class InfoController extends GetxController{
     }).catchError((onError){
       print('error ${onError}');
     });
+  }
+  Future<double> getRating() async{
+    //addValueEventListener
+    await FirebaseDatabase.instance.reference().child("Work").child(user!.uid).child('rating').once()
+        .then((DataSnapshot dataSnapshot) {
+      var values=dataSnapshot.value;
+      rating.value=values['rating'];
+      // for(var key in keys){
+      //   Work work=new Work(
+      //     rating: values [key]['rating'],
+      //   );
+      //   // print('check key ${work.key}');
+      //   print(work.rating);
+      // }
+
+
+    });
+    return rating.value;
   }
 }

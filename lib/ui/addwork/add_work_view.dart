@@ -10,7 +10,7 @@ import 'package:timeforlife/commons/constant/size_const.dart';
 import 'package:timeforlife/commons/utils/utils.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'add_work_controller.dart';
-
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class AddWorkView extends GetWidget<AddWorkController> {
   final _controller = Get.lazyPut(() => AddWorkController());
@@ -45,137 +45,133 @@ class AddWorkView extends GetWidget<AddWorkController> {
                         left: SizeConst.w10,
                         right: SizeConst.w10,
                         bottom: SizeConst.h20),
-                    child:  Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
                           children: [
-                            Row(
-                              children: [
-                                Container(
-                                  height: SizeConst.h32,
-                                  width: SizeConst.h32,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: IconButton(
-                                    icon: Image.asset(
-                                        'assets/images/backicon.png'),
-                                    iconSize: 50,
-                                    onPressed: () {
-                                      controller.back();
-                                    },
-                                  ),
-                                ),
-                                Utils.getSpaceView(SizeConst.w10, 0),
-                                Container(
-                                  child: Text(
-                                    'addnew'.tr,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: SizeConst.size18),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Utils.getSpaceView(0, SizeConst.h20),
                             Container(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Obx(() => DropdownButton<String>(
-                                        isDense: true,
-                                        style: TextStyle(color: Colors.white),
-                                        dropdownColor: Colors.black,
-                                        iconEnabledColor: ColorConstant.white,
-                                        onChanged: (value) {
-                                          // _addWorkController.onSelected(value.toString());
-                                        },
-                                        value: controller.dropdownValue.value ==
-                                                ''
-                                            ? null
-                                            : controller.dropdownValue.value,
-                                        elevation: 10,
-                                        items: controller.language.map((value) {
-                                          return DropdownMenuItem<String>(
-                                            onTap: () =>
-                                                controller.onSelected(value),
-                                            value: value,
-                                            child: Text(
-                                              value,
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          );
-                                        }).toList(),
-                                      )),
-                                  Text(
-                                    'Tháng 9,2021',
+                              height: SizeConst.h32,
+                              width: SizeConst.h32,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: IconButton(
+                                icon: Image.asset('assets/images/backicon.png'),
+                                iconSize: 50,
+                                onPressed: () {
+                                  controller.back();
+                                },
+                              ),
+                            ),
+                            Utils.getSpaceView(SizeConst.w10, 0),
+                            Container(
+                              child: Text(
+                                'addnew'.tr,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: SizeConst.size18),
+                              ),
+                            )
+                          ],
+                        ),
+                        Utils.getSpaceView(0, SizeConst.h20),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Obx(() => DropdownButton<String>(
+                                    isDense: true,
+                                    style: TextStyle(color: Colors.white),
+                                    dropdownColor: Colors.black,
+                                    iconEnabledColor: ColorConstant.white,
+                                    onChanged: (value) {
+                                      // _addWorkController.onSelected(value.toString());
+                                    },
+                                    value: controller.dropdownValue.value == ''
+                                        ? null
+                                        : controller.dropdownValue.value,
+                                    elevation: 10,
+                                    items: controller.language.map((value) {
+                                      return DropdownMenuItem<String>(
+                                        onTap: () =>
+                                            controller.onSelected(value),
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  )),
+                              Obx(() => Text(
+                                    '${controller.timeDate}',
                                     style: TextStyle(
                                         fontSize: SizeConst.size18,
                                         color: ColorConstant.white,
                                         fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ),
-                            controller.dropdownValue == 'Theo ngày'
-                                ? CalendarTimeline(
-                                    showYears: false,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(2020, 1, 1),
-                                    lastDate: DateTime(2025, 11, 20),
-                                    onDateSelected: (date) => controller
-                                        .selectTimeDate(date.toString()),
-                                    leftMargin: 50,
-                                    monthColor: Colors.blueGrey,
-                                    dayColor: Colors.white,
-                                    activeDayColor: Colors.blueAccent,
-                                    activeBackgroundDayColor: Colors.white,
-                                    dotsColor: Color(0xFF333A47),
+                                  ))
+                            ],
+                          ),
+                        ),
+                        Obx(()=>controller.dropdownValue == 'Theo ngày'
+                            ? CalendarTimeline(
+                          showYears: false,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2020, 1, 1),
+                          lastDate: DateTime(2025, 11, 20),
+                          onDateSelected: (date) => controller
+                              .selectTimeDate(date.toString()),
+                          leftMargin: 50,
+                          monthColor: Colors.white,
+                          dayColor: Colors.white,
+                          activeDayColor: Colors.blueAccent,
+                          activeBackgroundDayColor: Colors.white,
+                          dotsColor: Color(0xFF333A47),
 
-                                    // selectableDayPredicate: (date) => date.day != 23,
-                                    locale: 'vi',
-                                  )
-                                : Container(
-                                    margin: EdgeInsets.only(top: SizeConst.h32),
-                                    height: SizeConst.h42,
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: controller.listDate.length,
-                                      itemBuilder: (context, int) {
-                                        return Container(
-                                          margin: EdgeInsets.only(left: 15),
-                                          child: CircleAvatar(
-                                              radius: 17,
-                                              backgroundColor: Colors.white,
-                                              child: InkWell(
-                                                onTap: () {
-                                                  controller.getDateOfWeek(
-                                                      controller.listDate[int]);
-                                                },
-                                                child: Text(
-                                                  '${controller.listDate[int]}',
-                                                  style: TextStyle(
-                                                      color: controller.listDate[
-                                                                      int] !=
-                                                                  'T7' &&
-                                                              controller.listDate[
-                                                                      int] !=
-                                                                  'CN'
-                                                          ? ColorConstant
-                                                              .colorthu
-                                                          : ColorConstant.kpi,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              )),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                          ],
-                        )),
+                          // selectableDayPredicate: (date) => date.day != 23,
+                          locale: 'vi',
+                        )
+                            : MultiSelectChipField(
+                          selectedChipColor: Colors.red,
+                          items: controller.listDate
+                              .map((e) => MultiSelectItem(e, e))
+                              .toList(),
+                          onTap: (value) {
+                            // controller.listDate.remove(value);
+                          },
+                          itemBuilder: (item, state) {
+                            // return your custom widget here
+                            return InkWell(
+                                onTap: () {
+                                  controller.list.contains(item.value)
+                                      ? controller.list.remove(item.value)
+                                      : controller.list
+                                      .add(item.value.toString());
+                                  print(controller.list[0].toString());
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 15),
+                                  child: CircleAvatar(
+                                      radius: 17,
+                                      backgroundColor: controller.list.contains(item.value)
+                                          ? Colors.grey
+                                          : Colors.white,
+                                      child: Text(
+                                        '${item.value}',
+                                        style: TextStyle(
+                                            color: item.value != 'T7' &&
+                                                item.value != 'CN'
+                                                ? ColorConstant.colorthu
+                                                : ColorConstant.kpi,
+                                            fontWeight: FontWeight.bold),
+                                      )),
+                                ));
+                          },
+                        ))
+                      ],
+                    )),
                 Expanded(
                     child: SingleChildScrollView(
                   child: Container(
@@ -327,7 +323,7 @@ class AddWorkView extends GetWidget<AddWorkController> {
                                       ),
                                       Obx(
                                         () => Utils.customContainerStatus(
-                                            title:'emergency'.tr,
+                                            title: 'emergency'.tr,
                                             color: controller.clickStatus2.value
                                                 ? ColorConstant.status2
                                                 : Colors.grey[200],

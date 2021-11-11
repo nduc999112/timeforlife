@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:timeforlife/ui/detailwork/detail_work_controller.dart';
 import 'package:timeforlife/ui/notification/notification_controller.dart';
 import 'package:timeforlife/ui/setting/setting_controller.dart';
 import 'package:timeforlife/ui/statistical/statistical_controller.dart';
@@ -7,8 +8,8 @@ import 'package:timeforlife/ui/work/work_controller.dart';
 
 class HomePageController extends GetxController {
   var tabIndex = 0.obs;
-  // WorkController workController = Get.put(WorkController());
-  // final  notificationController = Get.lazyPut(() => NotificationController());
+  WorkController workController = Get.put(WorkController());
+  // final  notificationController = Get.lazyPut(() => DetailWorkController());
   // // NotificationController totalController = Get.put(NotificationController());
   // StatisticalController statisticalController = Get.put(StatisticalController());
   // SettingController settingController = Get.put(SettingController());
@@ -16,8 +17,8 @@ class HomePageController extends GetxController {
   changeTabIndex(int index) async {
     tabIndex.value = index;
     if(index==0){
-      WorkController workController=Get.find();
-      workController.onInit();
+      // WorkController workController=Get.find();
+      // workController.onInit();
     }
     if(index==1){
       StatisticalController staticController=Get.find();

@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -55,19 +57,27 @@ class SettingView extends GetWidget<SettingController> {
                     Utils.getSpaceView(0, SizeConst.h10),
                     Container(
                       margin: EdgeInsets.only(left: 20),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundImage: NetworkImage(
-                                'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg/800px-Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg'),
-                          ),
-                          Utils.getSpaceView(SizeConst.w10, 0),
-                          Text('Nguyễn Văn Đức',
-                              style: TextStyle(
-                                  fontSize: SizeConst.size20,
-                                  color: ColorConstant.white)),
-                        ],
+                      child: InkWell(
+                        onTap: (){
+                          controller.toDetailUser();
+                        },
+                        child: Row(
+                          children: [
+                            controller.user!.photoURL!=null?CircleAvatar(
+                                radius: 30,
+                                backgroundImage: FileImage(File(controller.user!.photoURL??''))
+                            ):CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(
+                                    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg/800px-Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg')
+                            ),
+                            Utils.getSpaceView(SizeConst.w10, 0),
+                            Text('${controller.user!.email}',
+                                style: TextStyle(
+                                    fontSize: SizeConst.size15,
+                                    color: ColorConstant.white))
+                          ],
+                        ),
                       ),
                     ),
                     Utils.getSpaceView(0, SizeConst.h20),

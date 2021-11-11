@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timeforlife/translation/Messages.dart';
+import 'package:timeforlife/ui/detailuser/detail_user_view.dart';
 import 'package:timeforlife/ui/login/loginscreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
 
 import 'commons/constant/color_constant.dart';
+import 'fcm.dart';
+import 'fcm2.dart';
 
 
 Future<void> _messageHandler(RemoteMessage message) async {

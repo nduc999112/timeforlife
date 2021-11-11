@@ -1,11 +1,11 @@
 import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:timeforlife/commons/constant/color_constant.dart';
 import 'package:timeforlife/ui/addwork/add_work_view.dart';
+import 'package:timeforlife/ui/detailwork/detail_work_controller.dart';
 import 'package:timeforlife/ui/detailwork/detail_work_view.dart';
 import 'package:intl/intl.dart';
 
@@ -67,6 +67,7 @@ class WorkController extends GetxController {
     Get.to(() => AddWorkView(), arguments: user);
   }
   void toDetail(int index){
+
   Get.to(()=>DetailWorkView(),arguments: {"list":list[index],"user":user});
   }
 
@@ -149,6 +150,7 @@ class Work {
   String ?id;
   bool? kpi;
   bool ?notification;
+  double ? rating;
 
   Work(
       {
@@ -164,7 +166,9 @@ class Work {
         this.alarm,
         this.id,
         this.kpi,
-        this.notification});
+        this.notification,
+        this.rating
+      });
 
   Work.fromJson(Map<String, dynamic> json) {
     contentWork = json['ContentWork'];

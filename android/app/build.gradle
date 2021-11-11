@@ -68,5 +68,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 //    implementation 'com.facebook.android:facebook-login:[8.1)'
     implementation 'com.facebook.android:facebook-login:4.30.0'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:19.1.5'
+    implementation 'com.android.support:multidex:1.0.3'
 }
 apply plugin: 'com.google.gms.google-services'

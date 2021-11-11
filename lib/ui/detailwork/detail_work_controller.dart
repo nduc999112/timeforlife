@@ -8,6 +8,8 @@ import 'package:timeforlife/ui/work/work_controller.dart';
 
 import 'package:intl/intl.dart';
 
+import 'detail_work_view.dart';
+
 class DetailWorkController extends GetxController{
 
   User ?user;
@@ -100,13 +102,17 @@ class DetailWorkController extends GetxController{
     // FirebaseDatabase.instance.reference().child("Work").orderByChild("nomPlace").equalTo("t").onChildRemoved;
     var key=work!.key;
     print('work ${work!.contentWork}');
-   await databaseRef.child("Work").child(user!.uid).child(key!).remove().then((value) => Get.to(()=>HomePageUI()));
+   await databaseRef.child("Work").child(user!.uid).child(key!).remove().then((value) {
+     // Get.to(HomePageUI());
+   });
 
   }
   void toWorkView(){
-    WorkController workController=Get.find();
-    workController.onInit();
+    // Get.off(HomePageUI());
+    Get.off(DetailWorkView());
     Get.back();
+    WorkController workController = Get.find();
+    workController.getWork();
   }
   void selectAlarm(){
     alarm.value=!alarm.value;

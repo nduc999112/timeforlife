@@ -400,10 +400,10 @@ class Utils {
           borderRadius: BorderRadius.circular(5),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey,
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 1,
-              blurRadius: 3,
-              offset: Offset(1, 3), // ch
+              blurRadius: 2,
+              offset: Offset(2, 3), // ch
             )
           ]
       ),

@@ -5,19 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:timeforlife/commons/constant/color_constant.dart';
+import 'package:timeforlife/ui/detailuser/detail_user_view.dart';
+import 'package:timeforlife/ui/detailuser/detailuser_controller.dart';
+import 'package:timeforlife/ui/login/login_controller.dart';
 import 'package:timeforlife/ui/login/loginscreen.dart';
 import 'package:timeforlife/ui/work/work_controller.dart';
 
 class SettingController extends GetxController{
   var language=true;
   var textlanguage='Tiếng việt'.obs;
+  User ?user;
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    WorkController workController = Get.find();
-    User ?user;
-    user=workController.user;
+    LoginController workController = Get.find();
+    user=workController.firebaseAuth.currentUser;
     print('setting ${user!.uid}');
   }
   void signout() async{
@@ -26,6 +29,12 @@ class SettingController extends GetxController{
     googleSignIn.isSignedIn().then((s) {print('đăng xuất thành công');});
     Get.offAll(LoginScreen());
   }
+
+  void toDetailUser(){
+    Get.to(() => DetailsUserView());
+
+  }
+
   void changeLocation(){
     language=!language;
     if(language){

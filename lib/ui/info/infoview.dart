@@ -38,13 +38,25 @@ class InfoView extends GetWidget<InfoController> {
                 margin: EdgeInsets.only(top: SizeConst.h20),
                 child:Column(
                   children: [
+                    Utils.getSpaceView(0, SizeConst.h20),
                     Row(
                       children: [
-                        IconButton(
-                          icon: Image.asset('assets/images/backicon.png'),
-                          iconSize: 50,
-                          onPressed: () {},
+                        Container(
+                          margin: EdgeInsets.only(left: 20),
+                          height: SizeConst.h32,
+                          width: SizeConst.h32,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: IconButton(
+                            icon: Image.asset('assets/images/backicon.png'),
+                            iconSize: 50,
+                            onPressed: () {
+                              Get.back();
+                            },
+                          ),
                         ),
+                        Utils.getSpaceView(SizeConst.w10, 0),
                         Text(
                           'Giới thiệu',
                           style: TextStyle(
@@ -54,6 +66,7 @@ class InfoView extends GetWidget<InfoController> {
                         )
                       ],
                     ),
+                    Utils.getSpaceView(0, SizeConst.h10),
                     Container(
                       height: 900,
                       width: double.infinity,

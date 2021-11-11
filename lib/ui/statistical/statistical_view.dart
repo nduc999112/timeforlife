@@ -338,13 +338,13 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                                 ])),
                                       ),
                                       Center(
-                                        child: Text(
-                                          '${'totalscore'.tr} : 4/6',
+                                        child: Obx(()=>Text(
+                                          '${'totalscore'.tr} : ${controller.totalmonthkpi.value}/ ${controller.totalmonth.value}',
                                           style: TextStyle(
                                               fontSize: SizeConst.size20,
                                               color: ColorConstant.black,
                                               fontWeight: FontWeight.bold),
-                                        ),
+                                        ),)
                                       ),
                                       Utils.getSpaceView(0, SizeConst.h20),
                                       Obx(() => Container(
@@ -545,13 +545,13 @@ class StatisticalView extends GetWidget<StatisticalController> {
                                                 ])),
                                       ),
                                       Center(
-                                        child: Text(
-                                          '${'totalscore'.tr}: 4/6',
+                                        child: Obx(()=>Text(
+                                          '${'totalscore'.tr}: ${controller.totalyearkpi.value}/ ${controller.totalyear.value}',
                                           style: TextStyle(
                                               fontSize: SizeConst.size20,
                                               color: ColorConstant.black,
                                               fontWeight: FontWeight.bold),
-                                        ),
+                                        ),)
                                       ),
                                       Utils.getSpaceView(0, SizeConst.h20),
                                      Obx(()=> Container(

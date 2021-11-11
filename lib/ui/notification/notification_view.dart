@@ -10,8 +10,9 @@ import 'package:timeforlife/commons/utils/utils.dart';
 import 'notification_controller.dart';
 
 class NotificationView extends GetWidget<NotificationController> {
-  // final  _controller = Get.lazyPut(() => NotificationController());
-  final NotificationController notificationController = Get.put(NotificationController());
+  final  _controller = Get.lazyPut(() => NotificationController());
+  
+  // final NotificationController notificationController = Get.put(NotificationController());
   @override
   Widget build(BuildContext context) {
     return Stack(

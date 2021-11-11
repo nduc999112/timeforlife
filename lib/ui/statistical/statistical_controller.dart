@@ -106,6 +106,12 @@ class StatisticalController extends GetxController {
   var kpiyearm12=0.obs;
   var workcompltem12=0.obs;
   var workfailm12=0.obs;
+
+  var totalmonth=0.obs;
+  var totalmonthkpi=0.obs;
+
+  var totalyear=0.obs;
+  var totalyearkpi=0.obs;
   //
   // final List<SalesData> chartData1 = [
   //   SalesData(2010 , 35),
@@ -153,8 +159,11 @@ class StatisticalController extends GetxController {
         var data = dataSnapshot.value.keys;
         var total = [];
         data.forEach((v) => total.add(v));
-        print('length total ${total.length + 1}');
-        totalWork.value = total.length + 1;
+        print('length total ${total.length }');
+        totalWork.value = total.length ;
+      }
+      else{
+        totalWork.value=0;
       }
     });
   }
@@ -240,7 +249,30 @@ class StatisticalController extends GetxController {
         print('check complete ${totalcomplete}');
         print('check fail ${totalfails}');
         print('check status ${status1} , ${status2} , ${status3} , ${status4}');
-      } else {}
+      } else {
+        totalcomplete.value = 0;
+        totalfails.value = 0;
+        status1.value = 0;
+        status2.value = 0;
+        status3.value = 0;
+        status4.value = 0;
+        status5.value = 0;
+        listComplete.clear();
+        listfail.clear();
+        chartData.clear();
+        chartData.addAll([
+          ChartData('David', 0,
+              color: ColorConstant.char1),
+          ChartData('Steve', 0,
+              color: ColorConstant.char2),
+          ChartData('Jack', 0,
+              color: ColorConstant.char3),
+          ChartData('Others', 0,
+              color: ColorConstant.char4),
+          ChartData('Others', 0,
+              color: ColorConstant.char5)
+        ]);
+      }
     });
   }
 
@@ -292,6 +324,8 @@ class StatisticalController extends GetxController {
         totalcplweek4.value = 0;
         totalfailweek4.value = 0;
 
+        totalmonth.value=0;
+        totalmonthkpi.value=0;
         for (var key in keys) {
           Work work = new Work(
             key: key,
@@ -321,7 +355,6 @@ class StatisticalController extends GetxController {
 
           print('check datedata $datedata ');
           int dateint = int.parse(datedata);
-
           if (yeardata == yearinput) {
             if (monthdata == monthinput) {
               if (dateint < 7) {
@@ -372,12 +405,39 @@ class StatisticalController extends GetxController {
                 }
 
               }
+              totalmonth.value=week1.value+week2.value+week3.value+week4.value;
+              totalmonthkpi.value=totalcplweek1.value+totalcplweek2.value+totalcplweek3.value+totalcplweek4.value;
+              print('check total kpi ${totalmonthkpi}');
             }
           }
 
           print('check week $week1 $week2 $week3 $week4');
         }}
-      } else {}
+      } else {
+        week1.value = 0;
+        week2.value = 0;
+        week3.value = 0;
+        week4.value = 0;
+
+        poinweek1.value = 0;
+        totalcplweek1.value = 0;
+        totalfailweek1.value = 0;
+
+        poinweek2.value = 0;
+        totalcplweek2.value = 0;
+        totalfailweek2.value = 0;
+
+        poinweek3.value = 0;
+        totalcplweek3.value = 0;
+        totalfailweek3.value = 0;
+
+        poinweek4.value = 0;
+        totalcplweek4.value = 0;
+        totalfailweek4.value = 0;
+
+        totalmonth.value=0;
+        totalmonthkpi.value=0;
+      }
     });
   }
 
@@ -449,6 +509,9 @@ class StatisticalController extends GetxController {
         kpiyearm12.value=0;
         workcompltem12.value=0;
         workfailm12.value=0;
+
+        totalyear.value=0;
+        totalyearkpi.value=0;
         var keys = dataSnapshot.value.keys;
         var values = dataSnapshot.value;
         print(dataSnapshot.value);
@@ -473,9 +536,9 @@ class StatisticalController extends GetxController {
           if(datetime!=null){
             String yeardata = formarYearData(datetime);
             String yearinput = formarYearInput();
-
             String monthdata = formarMonthData(datetime);
 
+            print('year data ${yeardata} và yearinput $yearinput');
             if (yeardata == yearinput) {
               if(int.parse(monthdata)==01){
                 month1++;
@@ -621,10 +684,81 @@ class StatisticalController extends GetxController {
                   workcompltem12++;
                 }
               }
+
+              totalyear.value=month1.value+month2.value+month3.value+month4.value+month5.value+month6.value+month7.value+month8.value+month9.value+month10.value+month11.value+month12.value;
+              totalyearkpi.value= workcompltem1.value+workcompltem2.value+workcompltem3.value+workcompltem4.value+workcompltem5.value+workcompltem6.value+workcompltem7.value+workcompltem8.value+workcompltem9.value+workcompltem10.value+workcompltem11.value+workcompltem12.value;
+            }
+            else {
+              print('no data year');
+              month1.value = 0;
+              month2.value = 0;
+              month3.value = 0;
+              month4.value = 0;
+              month5.value = 0;
+              month6.value = 0;
+              month7.value = 0;
+              month8.value = 0;
+              month9.value = 0;
+              month10.value = 0;
+              month11.value = 0;
+              month12.value = 0;
+
+              kpiyearm1.value=0;
+              workcompltem1.value=0;
+              workfailm1.value=0;
+
+              kpiyearm2.value=0;
+              workcompltem2.value=0;
+              workfailm2.value=0;
+
+              kpiyearm3.value=0;
+              workcompltem3.value=0;
+              workfailm3.value=0;
+
+              kpiyearm4.value=0;
+              workcompltem4.value=0;
+              workfailm4.value=0;
+
+              kpiyearm5.value=0;
+              workcompltem5.value=0;
+              workfailm5.value=0;
+
+              kpiyearm6.value=0;
+              workcompltem6.value=0;
+              workfailm6.value=0;
+
+              kpiyearm7.value=0;
+              workcompltem7.value=0;
+              workfailm7.value=0;
+
+              kpiyearm8.value=0;
+              workcompltem8.value=0;
+              workfailm8.value=0;
+
+              kpiyearm9.value=0;
+              workcompltem9.value=0;
+              workfailm9.value=0;
+
+              kpiyearm10.value=0;
+              workcompltem10.value=0;
+              workfailm10.value=0;
+
+              kpiyearm11.value=0;
+              workcompltem11.value=0;
+              workfailm11.value=0;
+
+              kpiyearm12.value=0;
+              workcompltem12.value=0;
+              workfailm12.value=0;
+
+              totalyear.value=0;
+              totalyearkpi.value=0;
             }
           }
         }
-      } else {}
+      } else{
+
+      }
     });
   }
 
@@ -637,7 +771,7 @@ class StatisticalController extends GetxController {
     );
     dateTime.value = selected.toString();
     onInit();
-    print('${dateTime.value}');
+
   }
 
   Future<void> pickMonth(BuildContext context) async {
@@ -647,7 +781,10 @@ class StatisticalController extends GetxController {
             lastDate: DateTime(DateTime.now().year + 1, 9),
             initialDate: DateTime.now(),
             locale: Locale("vi"))
-        .then((value) => dateMonth.value = value.toString());
+        .then((value) {dateMonth.value = value.toString();
+    onInit();
+    });
+
   }
 
   Future<void> picYear(BuildContext context) async {
@@ -667,12 +804,20 @@ class StatisticalController extends GetxController {
                 selectedDate: DateTime.now(),
                 onChanged: (DateTime dateTime) {
                   dateyear.value = dateTime.toString();
+                  print('check year${dateyear.value}');
                   Navigator.pop(context);
                 },
               )),
+
         );
+
       },
-    ).then((value) => getTotalYear());
+    ).then((value) {
+
+      getTotalYear();
+      onInit();
+
+    });
     // showMonthPicker(
     //     context: context,
     //     firstDate: DateTime(DateTime.now().year - 1, 5),
@@ -729,13 +874,13 @@ class StatisticalController extends GetxController {
     var inputFormat = DateFormat('dd/MM/yyyy');
     var inputDate = inputFormat.parse(month);
     var outputFormat = DateFormat('yyyy');
-    print(outputFormat.format(inputDate));
+    print('data formatyeardata ${outputFormat.format(inputDate)}');
     return outputFormat.format(inputDate);
   }
 
   String formarYearInput() {
     var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
-    var inputDate = inputFormat.parse(dateTime.value);
+    var inputDate = inputFormat.parse(dateyear.value);
     var outputFormat = DateFormat('yyyy');
     print(outputFormat.format(inputDate));
     return outputFormat.format(inputDate);
@@ -745,7 +890,7 @@ class StatisticalController extends GetxController {
     var inputFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
     var inputDate = inputFormat.parse(dateyear.value);
     var outputFormat = DateFormat('yyyy');
-    print(outputFormat.format(inputDate));
+    // print(outputFormat.format(inputDate));
     return outputFormat.format(inputDate);
   }
 }

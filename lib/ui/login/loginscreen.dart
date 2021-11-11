@@ -99,7 +99,13 @@ class LoginScreen extends GetWidget<LoginController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('assets/images/google.png'),
+                        InkWell(
+                            child: Image.asset('assets/images/google.png'),
+                          onTap: (){
+                              controller.loginGoogle();
+                          },
+
+                        ),
                         Utils.getSpaceView(SizeConst.w20, 0),
                         Image.asset('assets/images/facebook.png'),
                       ],

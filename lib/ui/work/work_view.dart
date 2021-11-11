@@ -7,7 +7,7 @@ import 'package:timeforlife/commons/constant/size_const.dart';
 import 'package:timeforlife/commons/utils/utils.dart';
 import 'work_controller.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
-
+import 'dart:io';
 class WorkView extends GetWidget<WorkController> {
   final  _controller = Get.lazyPut(() => WorkController());
   var query = FirebaseDatabase.instance.reference().child("Work").orderByChild("DateTime").equalTo("");
@@ -44,23 +44,29 @@ class WorkView extends GetWidget<WorkController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundImage: NetworkImage(
-                                    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg/800px-Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg')
+                              controller.user!.photoURL!=null?CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: FileImage(File(controller.user!.photoURL??''))
+                              ):CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: NetworkImage(
+                                      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg/800px-Oleksandr_Usyk_training_-_20150409_-_24_%28cut%29.jpg')
                               ),
                               Utils.getSpaceView(SizeConst.w10, 0),
-                              Text('${controller.user!.email}',
-                                  style: TextStyle(
-                                    fontSize: SizeConst.size14,
-                                    color: ColorConstant.white,
-                                  )),
+                              SizedBox(
+                                width: 150,
+                                child: Text('${controller.user!.email}',
+                                    style: TextStyle(
+                                      fontSize: SizeConst.size16,
+                                      color: ColorConstant.white,
+                                    )),
+                              ),
                             ],
                           ),
                           IconButton(
@@ -73,6 +79,7 @@ class WorkView extends GetWidget<WorkController> {
                         ],
                       ),
                     ),
+                    Utils.getSpaceView(0, SizeConst.h10),
                     Obx(()=>
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -95,18 +102,17 @@ class WorkView extends GetWidget<WorkController> {
                             controller.selectTimeDate(date.toString());
                             controller.getWork();
                           },
-
                           leftMargin: 50,
                           monthColor: Colors.white,
                           dayColor: Colors.white,
                           activeDayColor: Colors.blueAccent,
                           activeBackgroundDayColor: Colors.white,
                           dotsColor: Color(0xFF333A47),
-                          selectableDayPredicate: (date) => date.day != 23,
                           locale: 'vi',
                         )
                       ],
                     ),
+                    Utils.getSpaceView(0, SizeConst.h10),
                     Expanded(
                       child:
                       Container(

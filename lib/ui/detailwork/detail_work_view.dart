@@ -14,6 +14,7 @@ import 'detail_work_controller.dart';
 class DetailWorkView extends GetWidget<DetailWorkController> {
 
   final  _controller = Get.lazyPut(() => DetailWorkController());
+  // final DetailWorkController homePageController = Get.put(DetailWorkController());
   @override
   Widget build(BuildContext context) {
     return  Stack(
@@ -126,8 +127,9 @@ class DetailWorkView extends GetWidget<DetailWorkController> {
                                                     ),
                                                   ),
                                                   onTap: (){
+                                                    Navigator.pop(context);
                                                     controller.deleteData();
-                                                    // controller.toWorkView();
+                                                    controller.toWorkView();
                                                   },
                                                 )
                                               ],
@@ -546,7 +548,7 @@ class DetailWorkView extends GetWidget<DetailWorkController> {
                                   InkWell(
                                     onTap: () {
                                       controller.updateData();
-                                      // controller.toWorkView();
+                                      controller.toWorkView();
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
